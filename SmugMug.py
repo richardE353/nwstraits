@@ -32,7 +32,8 @@ def main():
 
         if beach_images:
             print('\tloading gisWorksheet')
-            ws_path = os.path.join(src_dir, 'gisWorksheet.xlsx')
+            fn = 'gisWorksheet' + str(year) + '.xlsx'
+            ws_path = os.path.join(src_dir, fn)
             wb = openpyxl.load_workbook(ws_path, rich_text=True)
             sheet = wb.active
 

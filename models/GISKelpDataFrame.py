@@ -141,7 +141,7 @@ def path_to_link(path, label):
 
 # https://www.kdnuggets.com/2022/08/3-ways-append-rows-pandas-dataframes.html
 # https://groups.google.com/g/openpyxl-users/c/1auXBiDlzHk?pli=1 (final comment)
-def create_gis_excel_workbook(surveys: dict, dest: str):
+def create_gis_excel_workbook(surveys: dict, dest: str, year: int):
     gis_data = []
     for cty in surveys.keys():
         for ks in surveys[cty]:
@@ -161,7 +161,8 @@ def create_gis_excel_workbook(surveys: dict, dest: str):
     number_cols = ['D', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'S', 'V', 'W', 'X', 'Y', 'Z', 'AD', 'AF', 'AG']
     set_number_formats(ws, number_cols, '0.00')
 
-    destination = str(os.path.join(dest, 'gisWorksheet.xlsx'))
+    fn = 'gisWorksheet' + str(year) + '.xlsx'
+    destination = str(os.path.join(dest, fn))
     print('\t\twriting ', destination)
 
     wb.save(destination)
@@ -183,6 +184,7 @@ def set_number_formats(sheet: Worksheet, cell_letters: list, fmt: str):
     for c in cell_letters:
         for i in range(1, sheet.max_row):
             sheet[c + str(i)].number_format = fmt
+
 
 def set_column_labels(sheet: Worksheet):
     labels = row_header_labels()

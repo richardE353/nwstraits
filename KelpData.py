@@ -40,11 +40,11 @@ def main():
     copy_attachments_to_target_dir(surveys_by_county, attach_dir, output_dir)
 
     print('\texporting GIS Worksheet.')
-    create_gis_excel_workbook(surveys_by_county, output_dir)
+    create_gis_excel_workbook(surveys_by_county, output_dir, data_year)
 
     print('\tcreating log file.')
     logger = KelpDataLog(user_params, output_dir, surveys_by_county)
-    logger.create_and_write_log()
+    logger.create_and_write_log(data_year)
 
     print('Done.')
 

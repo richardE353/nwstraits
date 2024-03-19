@@ -21,8 +21,10 @@ class KelpDataLog:
         for county in self.kelp_data.keys():
             surveys = list(filter(filter_func, self.kelp_data[county]))
 
-            if surveys: self.str_buffer.write("\t" + county + "\n")
-            for s in surveys: self.str_buffer.write("\t\t" + s.file_prefix() + "\n")
+            if surveys:
+                self.str_buffer.write("\t" + county + "\n")
+            for s in surveys:
+                self.str_buffer.write("\t\t" + s.file_prefix() + "\n")
 
     def append_parameter_info(self):
         self.str_buffer.write("Runtime parameters\n")
@@ -81,15 +83,16 @@ class KelpDataLog:
                 self.str_buffer.write("\t\t" + s.location + " " + s.survey_date.replace("-", "_") + "\n")
 
     def append_volunteer_info(self):
-        def has_volunteer_names(s: KelpSurvey) -> bool:
-            return len(s.volunteer_info.names) > 0
+        def has_volunteer_names(ks: KelpSurvey) -> bool:
+            return len(ks.volunteer_info.names) > 0
 
         self.str_buffer.write("\n\nSurvey Volunteers:\n")
 
         for county in self.kelp_data.keys():
             surveys = list(filter(has_volunteer_names, self.kelp_data[county]))
 
-            if surveys: self.str_buffer.write("\t" + county + "\n")
+            if surveys:
+                self.str_buffer.write("\t" + county + "\n")
 
             for s in surveys:
                 self.str_buffer.write("\t\t" + s.file_prefix() + " " + s.volunteer_info.names + "\n")
@@ -99,7 +102,7 @@ class KelpDataLog:
         f.write(self.str_buffer.getvalue())
         f.close()
 
-    def create_and_write_log(self):
+    def create_and_write_log(self, year: int):
         self.append_parameter_info()
         self.append_missing_data_sheets()
         self.append_missing_gpx_files()
@@ -110,5 +113,6 @@ class KelpDataLog:
         self.append_survey_info()
         self.append_volunteer_info()
 
-        full_path = os.path.join(self.target, "extractionLog.txt")
+        fn = 'extractionLog' + str(year) + '.txt'
+        full_path = os.path.join(self.target, fn)
         self.write_log(full_path)
