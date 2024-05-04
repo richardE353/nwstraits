@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from io import StringIO
 from math import isnan
 
-from models.KelpDataRow import KelpSurvey
+from models.kelp_row import KelpSurvey
 
 
 @dataclass

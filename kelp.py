@@ -7,20 +7,20 @@ import sys
 import pandas as pd
 from pandas import DataFrame
 
-from models.GISKelpDataFrame import create_gis_excel_workbook
-from models.KelpDataRow import extract_rows
-from utils.FilesHelper import copy_beach_images_to
-from utils.KelpDataLog import KelpDataLog
+from models.kelp_data_frame import create_gis_excel_workbook
+from models.kelp_row import extract_rows
+from utils.files_helper import copy_beach_images_to
+from utils.kelp_log import KelpDataLog
 
-import RuntimeArgs as rt_args
+import runtime_args as rt_args
 
 
 def main():
     data_year: int = rt_args.select_collection_year()
-    input_xlsx = select_database_path()
+    input_xlsx = rt_args.select_database_path()
     start_date = select_start_date()
-    attach_dir = select_attachment_dir()
-    output_dir = select_target_dir(data_year)
+    attach_dir = rt_args.select_attachment_dir()
+    output_dir = rt_args.select_target_dir(data_year)
 
     user_params = [("Year", str(data_year)),
                    ("Excel File", input_xlsx),
@@ -28,7 +28,7 @@ def main():
                    ("Start Date", start_date),
                    ("Target", output_dir)]
 
-    print_runtime_args(user_params)
+    rt_args.print_runtime_args(user_params)
 
     print('\n\tcopying attachments to output directory.')
     df = pd.read_excel(input_xlsx).sort_values("data_county")
@@ -76,30 +76,6 @@ def select_start_date() -> str:
     return str(rt_args.default_year) + "-01-01"
 
 
-def select_database_path() -> str:
-    input_xlsx = input("Enter .xlsx file to read: ").strip()
-    if len(input_xlsx) > 0:
-        return input_xlsx
-
-    return rt_args.default_excel
-
-
-def select_attachment_dir() -> str:
-    attach_dir = input("Enter directory containing attachments: ").strip()
-    if len(attach_dir) > 0:
-        return attach_dir
-
-    return rt_args.default_attach_dir
-
-
-def select_target_dir(year: int) -> str:
-    output_dir = input("Output directory: ").strip()
-    if len(output_dir) > 0:
-        return output_dir
-
-    return os.path.join(rt_args.default_output_dir, str(year))
-
-
 # https://stackoverflow.com/questions/69998096/how-to-create-multiple-folders-inside-a-directory
 def create_target_directories(c_names, base_dir):
     try:
@@ -114,12 +90,6 @@ def create_target_directories(c_names, base_dir):
         os.makedirs(album_dir)
     except FileExistsError:
         print("Invalid output directory.  Make sure directory does not exist, or is writable")
-
-
-def print_runtime_args(args: list):
-    print("Runtime parameters")
-    for k, v in args:
-        print("\t" + k + ": " + v)
 
 
 if __name__ == "__main__":

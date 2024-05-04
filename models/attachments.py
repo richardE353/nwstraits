@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 from pandas import Series
 
-from utils.FilesHelper import copy_file_if_exists
+from utils.files_helper import copy_file_if_exists
 
-import utils.PandasHelper as ph
+import utils.pandas_helper as ph
 
 
 @dataclass(frozen=True)

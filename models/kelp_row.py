@@ -5,16 +5,16 @@ from datetime import date, time
 
 from pandas import DataFrame, Series
 
-import models.SurveySiteImages as SurveySiteImages
-import models.DataSetAttachments as DataSetAttachments
-import models.KelpClusterPoint as KelpClusterPoint
-import models.VolunteerInfo as VolunteerInfo
-import models.TidalStation as TidalStation
+import models.site_images as SurveySiteImages
+import models.attachments as DataSetAttachments
+import models.cluster_point as KelpClusterPoint
+import models.volunteer_info as VolunteerInfo
+import models.tidal_station as TidalStation
 
-import utils.PandasHelper as ph
+import utils.pandas_helper as ph
 
-import noaa.MllwDepthAdjuster as MllwDepthAdjuster
-from models.TidalStation import lookup_station
+import noaa.mllw_adjuster as MllwDepthAdjuster
+from models.tidal_station import lookup_station
 
 
 @dataclass()

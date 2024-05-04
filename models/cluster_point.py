@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from pandas import Series
 
-import utils.PandasHelper as ph
+import utils.pandas_helper as ph
 
 
 @dataclass(frozen=True)

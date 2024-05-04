@@ -2,8 +2,8 @@ from dataclasses import dataclass
 
 from pandas import Series
 
-import utils.FilesHelper as fh
-import utils.PandasHelper as ph
+import utils.files_helper as fh
+import utils.pandas_helper as ph
 
 @dataclass(frozen=True)
 class SurveySiteImages:

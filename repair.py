@@ -4,12 +4,12 @@ import sys
 import openpyxl
 from openpyxl.workbook import Workbook
 
-import RuntimeArgs as rt_args
+import runtime_args as rt_args
 
 from pandas import DataFrame
 
-from SmugMug import update_urls, images_for_year, resize_thumbnail
-from models.GISKelpDataFrame import as_data_frame
+from smugmug import update_urls, images_for_year, resize_thumbnail
+from models.kelp_data_frame import as_data_frame
 
 years = [2019, 2020, 2021]
 

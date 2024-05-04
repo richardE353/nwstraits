@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from datetime import date, time, datetime
 
-from models.TidalStation import TidalStation
+from models.tidal_station import TidalStation
 
-import noaa.WaterLevelQuery as wlq
-from noaa.WaterLevelQuery import WaterLevel
+import noaa.wtr_lvl_query as wlq
+from noaa.wtr_lvl_query import WaterLevel
 
 
 @dataclass()

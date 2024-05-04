@@ -7,9 +7,9 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 from pandas import DataFrame
 
-import utils.FilesHelper as fh
+import utils.files_helper as fh
 
-from models.KelpDataRow import KelpSurvey
+from models.kelp_row import KelpSurvey
 
 
 @dataclass

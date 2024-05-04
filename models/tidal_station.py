@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 
-import noaa.NoaaApiFetcher as naf
-import models.TidalCorrection as tc
+import noaa.api_fetcher as naf
+import models.tidal_correction as tc
 
-from models.TidalCorrection import TidalCorrection
+from models.tidal_correction import TidalCorrection
 
 
 @dataclass()

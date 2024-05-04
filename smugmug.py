@@ -7,7 +7,7 @@ import openpyxl
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.worksheet import Worksheet
 
-import RuntimeArgs as rt_args
+import runtime_args as rt_args
 import sys
 
 import pandas as pd
@@ -15,7 +15,7 @@ from pandas import DataFrame
 
 import requests
 
-from models.GISKelpDataFrame import as_data_frame
+from models.kelp_data_frame import as_data_frame
 
 
 def main():

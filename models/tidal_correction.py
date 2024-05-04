@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-import noaa.NoaaApiFetcher as naf
+import noaa.api_fetcher as naf
 
 
 @dataclass(frozen=True)

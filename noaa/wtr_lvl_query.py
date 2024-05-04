@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 
-import noaa.NoaaApiFetcher as naf
+import noaa.api_fetcher as naf
 
 @dataclass()
 class WaterLevel:
