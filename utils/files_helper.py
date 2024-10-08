@@ -25,7 +25,7 @@ def find_path(file_name: str) -> str:
     return kobo_attachment_files[search_name]
 
 def remove_invalid_chars(file_name: str) -> str:
-    invalid_chars = [":", ",", ":", "(", ")", "°", "'"]
+    invalid_chars = [":", ",", ":", "(", ")", "°", "'", "?"]
 
     clean_str = file_name
     for c in invalid_chars:
