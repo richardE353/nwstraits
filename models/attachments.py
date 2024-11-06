@@ -28,9 +28,9 @@ class DataSetAttachments:
         if len(self.second_gps_file) > 0:
             copy_file_if_exists(file_prefix, src, dest, self.second_gps_file, '_Gps2')
         if len(self.third_gps_file) > 0:
-            copy_file_if_exists(file_prefix, src, dest, self.second_gps_file, '_Gps3')
+            copy_file_if_exists(file_prefix, src, dest, self.third_gps_file, '_Gps3')
         if len(self.fourth_gps_file) > 0:
-            copy_file_if_exists(file_prefix, src, dest, self.second_gps_file, '_Gps4')
+            copy_file_if_exists(file_prefix, src, dest, self.fourth_gps_file, '_Gps4')
         if len(self.spreadsheet_1) > 0:
             copy_file_if_exists(file_prefix, src, dest, self.spreadsheet_1, '_SpreadSheet1')
         if len(self.spreadsheet_2) > 0:
